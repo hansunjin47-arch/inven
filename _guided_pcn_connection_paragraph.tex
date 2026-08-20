@@ -1,0 +1,11 @@
+\subsection{Guided PCN}\label{PCN_variation}
+In this study, the PCN algorithm was improved to reduce randomness and enable a more efficient search for the Pareto front.
+Among the four steps in the PCN, \textit{building the dataset} and \textit{policy exploration} rely heavily on randomness.
+To address this limitation, we propose two guided variations that enhance these stages through structured initialization and targeted exploration, improving both robustness and efficiency.
+\textcolor{red}{Although the two variations act at different steps of the PCN pipeline, they are unified by a common design principle rather than being independent, sequentially applied methods.
+The original PCN contains two distinct sources of undirected randomness: the initial buffer is built from random policies (Step~1), and the target-return perturbation used during exploration is likewise drawn without guidance (Step~3).
+The two proposed variations replace exactly these two sources with information-driven counterparts, while the network-training and buffer-maintenance steps (Steps~2 and~4) are left unchanged.
+Evolutionary buffer initialization determines \emph{where} the search begins: it seeds the buffer with MOPSO-derived Pareto-optimal anchors, so that the desired-return targets PCN subsequently conditions on already correspond to high-quality, diverse trade-offs rather than to arbitrary random-policy outcomes.
+Guided exploration then determines \emph{how} the search proceeds from these seeded targets: at every training cycle, it computes statistics directly from the current buffer -- which, in early training, is still dominated by the MOPSO-seeded solutions -- to decide which objective to improve and by how much.
+Because guided exploration is applied at every training cycle to a buffer whose composition and statistics are shaped by the evolutionary seeding throughout training, rather than being applied once as a preprocessing step before an otherwise unmodified PCN, the two mechanisms remain coupled for the entire training process rather than constituting a simple sequential combination of two existing methods.}
+Figure~\ref{fig:framework} illustrates the overall frameworks of the original PCN and the proposed Guided PCN, highlighting how the two guided variations modify the original PCN algorithm.

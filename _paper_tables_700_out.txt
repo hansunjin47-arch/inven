@@ -1,0 +1,600 @@
+%table9
+\begin{table}[H]
+\centering
+\scriptsize
+\caption{Results of the set coverage $C(A,B)$ metric for the geometric Brownian motion (GBM) setting}
+\label{tab:SC_GBM}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{c|c c c c c c}
+\hline
+\diagbox[width=11em,height=2em]{$A$}{$B$} & MOPSO & MOPSO-AMS & CAPQL & Original PCN & PCN with buffer init. & Guided PCN \\
+\hline
+MOPSO & -- & $0.45 \pm 0.39$ & $0.69 \pm 0.34$ & $1.00 \pm 0.00$ & $0.20 \pm 0.40$ & $0.20 \pm 0.40$ \\
+
+MOPSO-AMS & $0.30 \pm 0.30$ & -- & $0.61 \pm 0.41$ & $1.00 \pm 0.00$ & $0.20 \pm 0.40$ & $0.20 \pm 0.40$ \\
+
+CAPQL & $0.15 \pm 0.30$ & $0.29 \pm 0.42$ & -- & $1.00 \pm 0.00$ & $0.22 \pm 0.35$ & $0.21 \pm 0.35$ \\
+
+Original PCN & $0.00 \pm 0.00$ & $0.00 \pm 0.00$ & $0.00 \pm 0.00$ & -- & $0.00 \pm 0.00$ & $0.00 \pm 0.00$ \\
+
+PCN with buffer init. & $0.80 \pm 0.40$ & $0.80 \pm 0.40$ & $0.74 \pm 0.40$ & $1.00 \pm 0.00$ & -- & $0.33 \pm 0.21$ \\
+
+Guided PCN & $0.80 \pm 0.40$ & $0.80 \pm 0.40$ & $0.74 \pm 0.40$ & $1.00 \pm 0.00$ & $0.36 \pm 0.24$ & -- \\
+
+\hline
+\end{tabular}
+}
+\end{table}
+
+%table10
+\begin{table}[H]
+\centering
+\setlength{\tabcolsep}{1pt}
+\scriptsize
+\caption{Metrics of the six algorithms for the GBM setting}
+\label{tab:metric_GBM}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{c|c c c c c c}
+\hline
+Metric & MOPSO & MOPSO-AMS & CAPQL & Original PCN & PCN with buffer init. & Guided PCN \\
+\hline
+Spacing
+    & $47.90 \pm 39.57$
+    & $16.69 \pm 10.28$
+    & $121.80 \pm 206.98$
+    & $0.00 \pm 0.00$
+    & $234.08 \pm 180.14$
+    & $177.26 \pm 139.62$ \\
+
+Maximum spread
+    & $2976.91 \pm 1992.53$
+    & $2974.23 \pm 1860.16$
+    & $2016.70 \pm 2600.07$
+    & $0.00 \pm 0.00$
+    & $4263.24 \pm 4123.18$
+    & $4152.74 \pm 4165.38$ \\
+
+Mean total cost (1e3)
+    & $3.21 \pm 0.58$
+    & $3.47 \pm 0.88$
+    & $4.16 \pm 0.93$
+    & $37.73 \pm 0.91$
+    & $2.94 \pm 0.67$
+    & $2.95 \pm 0.71$ \\
+
+Mean stockout frequency
+    & $21.49 \pm 9.38$
+    & $21.55 \pm 10.55$
+    & $13.85 \pm 12.24$
+    & $0.00 \pm 0.00$
+    & $20.47 \pm 8.46$
+    & $20.79 \pm 6.79$ \\
+
+Mean stockout amount
+    & $816.39 \pm 502.29$
+    & $837.07 \pm 518.33$
+    & $571.75 \pm 659.04$
+    & $0.00 \pm 0.00$
+    & $923.01 \pm 891.47$
+    & $878.69 \pm 690.38$ \\
+
+HV (normalized)
+    & $1.3063 \pm 0.0112$
+    & $1.2979 \pm 0.0262$
+    & $1.2822 \pm 0.0248$
+    & $0.1208 \pm 0.0007$
+    & $1.3164 \pm 0.0142$
+    & $1.3162 \pm 0.0146$ \\
+
+IGD (normalized)
+    & $0.0533 \pm 0.0281$
+    & $0.0592 \pm 0.0419$
+    & $0.1527 \pm 0.1444$
+    & $1.0643 \pm 0.0395$
+    & $0.0344 \pm 0.0483$
+    & $0.0311 \pm 0.0468$ \\
+\hline
+\end{tabular}
+}
+\end{table}
+
+%table1
+\begin{table}[H]
+\centering
+\scriptsize
+\caption{Results of the set coverage $C(A,B)$ metric for the stationary setting (low variance)}
+\label{tab:SC_stationary_1}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{c|c c c c c c}
+\hline
+\diagbox[width=11em,height=2em]{$A$}{$B$} & MOPSO & MOPSO-AMS & CAPQL & Original PCN & PCN with buffer init. & Guided PCN \\
+\hline
+MOPSO & -- & $0.27 \pm 0.38$ & $0.74 \pm 0.33$ & $1.00 \pm 0.00$ & $0.35 \pm 0.26$ & $0.30 \pm 0.21$ \\
+
+MOPSO-AMS & $0.63 \pm 0.36$ & -- & $0.89 \pm 0.30$ & $1.00 \pm 0.00$ & $0.65 \pm 0.34$ & $0.60 \pm 0.34$ \\
+
+CAPQL & $0.13 \pm 0.30$ & $0.10 \pm 0.30$ & -- & $1.00 \pm 0.00$ & $0.04 \pm 0.05$ & $0.04 \pm 0.05$ \\
+
+Original PCN & $0.00 \pm 0.00$ & $0.00 \pm 0.00$ & $0.00 \pm 0.00$ & -- & $0.00 \pm 0.00$ & $0.00 \pm 0.00$ \\
+
+PCN with buffer init. & $0.43 \pm 0.30$ & $0.24 \pm 0.38$ & $0.83 \pm 0.21$ & $1.00 \pm 0.00$ & -- & $0.25 \pm 0.15$ \\
+
+Guided PCN & $0.50 \pm 0.29$ & $0.25 \pm 0.38$ & $0.77 \pm 0.20$ & $1.00 \pm 0.00$ & $0.41 \pm 0.14$ & -- \\
+
+\hline
+\end{tabular}
+}
+\end{table}
+
+%table4
+\begin{table}[H]
+\centering
+\setlength{\tabcolsep}{1pt}
+\scriptsize
+\caption{Metrics of the six algorithms for stationary setting (low variance)}
+\label{tab:metric_stationary_1}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{c|c c c c c c}
+\hline
+Metric & MOPSO & MOPSO-AMS & CAPQL & Original PCN & PCN with buffer init. & Guided PCN \\
+\hline
+Spacing
+    & $81.98 \pm 30.95$
+    & $43.63 \pm 17.37$
+    & $125.53 \pm 139.06$
+    & $0.00 \pm 0.00$
+    & $218.70 \pm 94.58$
+    & $243.49 \pm 133.60$ \\
+
+Maximum spread
+    & $4153.14 \pm 1886.88$
+    & $6021.57 \pm 1813.22$
+    & $2567.38 \pm 1938.36$
+    & $0.00 \pm 0.00$
+    & $6965.15 \pm 751.31$
+    & $6965.15 \pm 751.31$ \\
+
+Mean total cost (1e3)
+    & $3.40 \pm 0.30$
+    & $3.47 \pm 0.75$
+    & $5.33 \pm 2.64$
+    & $51.81 \pm 0.80$
+    & $3.29 \pm 0.06$
+    & $3.26 \pm 0.04$ \\
+
+Mean stockout frequency
+    & $29.02 \pm 10.51$
+    & $39.39 \pm 11.92$
+    & $21.44 \pm 15.17$
+    & $0.00 \pm 0.00$
+    & $33.87 \pm 6.41$
+    & $36.69 \pm 4.78$ \\
+
+Mean stockout amount
+    & $1151.87 \pm 611.17$
+    & $1896.98 \pm 624.96$
+    & $912.47 \pm 771.92$
+    & $0.00 \pm 0.00$
+    & $1481.40 \pm 432.56$
+    & $1529.86 \pm 345.75$ \\
+
+HV (normalized)
+    & $1.3160 \pm 0.0071$
+    & $1.3129 \pm 0.0148$
+    & $1.2743 \pm 0.0581$
+    & $0.1208 \pm 0.0007$
+    & $1.3182 \pm 0.0016$
+    & $1.3184 \pm 0.0018$ \\
+
+IGD (normalized)
+    & $0.0866 \pm 0.1011$
+    & $0.0372 \pm 0.0713$
+    & $0.2134 \pm 0.1780$
+    & $1.1565 \pm 0.0221$
+    & $0.0326 \pm 0.0085$
+    & $0.0296 \pm 0.0135$ \\
+\hline
+\end{tabular}
+}
+\end{table}
+
+%table2
+\begin{table}[H]
+\centering
+\scriptsize
+\caption{Results of the set coverage $C(A,B)$ metric for stationary setting (medium variance)}
+\label{tab:SC_stationary_2}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{c|c c c c c c}
+\hline
+\diagbox[width=11em,height=2em]{$A$}{$B$} & MOPSO & MOPSO-AMS & CAPQL & Original PCN & PCN with buffer init. & Guided PCN \\
+\hline
+MOPSO & -- & $0.37 \pm 0.41$ & $0.74 \pm 0.28$ & $1.00 \pm 0.00$ & $0.35 \pm 0.31$ & $0.29 \pm 0.28$ \\
+
+MOPSO-AMS & $0.56 \pm 0.44$ & -- & $0.76 \pm 0.34$ & $1.00 \pm 0.00$ & $0.62 \pm 0.37$ & $0.59 \pm 0.38$ \\
+
+CAPQL & $0.11 \pm 0.22$ & $0.18 \pm 0.30$ & -- & $0.80 \pm 0.40$ & $0.12 \pm 0.14$ & $0.15 \pm 0.17$ \\
+
+Original PCN & $0.00 \pm 0.00$ & $0.00 \pm 0.00$ & $0.01 \pm 0.03$ & -- & $0.00 \pm 0.00$ & $0.00 \pm 0.00$ \\
+
+PCN with buffer init. & $0.54 \pm 0.37$ & $0.28 \pm 0.38$ & $0.72 \pm 0.26$ & $1.00 \pm 0.00$ & -- & $0.24 \pm 0.11$ \\
+
+Guided PCN & $0.56 \pm 0.35$ & $0.30 \pm 0.38$ & $0.72 \pm 0.24$ & $1.00 \pm 0.00$ & $0.36 \pm 0.17$ & -- \\
+
+\hline
+\end{tabular}
+}
+\end{table}
+
+%table5
+\begin{table}[H]
+\centering
+\setlength{\tabcolsep}{1pt}
+\scriptsize
+\caption{Metrics of the six algorithms for stationary setting (medium variance)}
+\label{tab:metric_stationary_2}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{c|c c c c c c}
+\hline
+Metric & MOPSO & MOPSO-AMS & CAPQL & Original PCN & PCN with buffer init. & Guided PCN \\
+\hline
+Spacing
+    & $183.21 \pm 97.40$
+    & $64.12 \pm 30.46$
+    & $201.11 \pm 190.61$
+    & $0.00 \pm 0.00$
+    & $314.56 \pm 189.90$
+    & $309.85 \pm 199.61$ \\
+
+Maximum spread
+    & $4014.94 \pm 2130.56$
+    & $5706.34 \pm 2297.43$
+    & $3022.18 \pm 1609.45$
+    & $0.00 \pm 0.00$
+    & $7582.54 \pm 821.71$
+    & $7582.54 \pm 821.71$ \\
+
+Mean total cost (1e3)
+    & $3.58 \pm 0.44$
+    & $3.51 \pm 0.78$
+    & $5.35 \pm 1.88$
+    & $51.65 \pm 0.80$
+    & $3.34 \pm 0.07$
+    & $3.29 \pm 0.07$ \\
+
+Mean stockout frequency
+    & $21.17 \pm 8.42$
+    & $34.89 \pm 12.21$
+    & $30.91 \pm 17.44$
+    & $0.00 \pm 0.00$
+    & $32.25 \pm 4.50$
+    & $34.46 \pm 4.74$ \\
+
+Mean stockout amount
+    & $828.95 \pm 415.01$
+    & $1706.75 \pm 656.33$
+    & $1295.94 \pm 818.19$
+    & $0.00 \pm 0.00$
+    & $1590.28 \pm 246.14$
+    & $1629.54 \pm 281.54$ \\
+
+HV (normalized)
+    & $1.3142 \pm 0.0106$
+    & $1.3131 \pm 0.0168$
+    & $1.2659 \pm 0.0510$
+    & $0.1444 \pm 0.0713$
+    & $1.3179 \pm 0.0026$
+    & $1.3185 \pm 0.0023$ \\
+
+IGD (normalized)
+    & $0.1133 \pm 0.1003$
+    & $0.0594 \pm 0.1071$
+    & $0.1632 \pm 0.1176$
+    & $1.1300 \pm 0.0566$
+    & $0.0362 \pm 0.0158$
+    & $0.0337 \pm 0.0194$ \\
+\hline
+\end{tabular}
+}
+\end{table}
+
+%table3
+\begin{table}[H]
+\centering
+\scriptsize
+\caption{Results of the set coverage $C(A,B)$ metric for stationary setting (high variance)}
+\label{tab:SC_stationary_3}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{c|c c c c c c}
+\hline
+\diagbox[width=11em,height=2em]{$A$}{$B$} & MOPSO & MOPSO-AMS & CAPQL & Original PCN & PCN with buffer init. & Guided PCN \\
+\hline
+MOPSO & -- & $0.33 \pm 0.44$ & $0.68 \pm 0.34$ & $1.00 \pm 0.00$ & $0.27 \pm 0.22$ & $0.29 \pm 0.19$ \\
+
+MOPSO-AMS & $0.62 \pm 0.41$ & -- & $0.78 \pm 0.39$ & $1.00 \pm 0.00$ & $0.63 \pm 0.38$ & $0.66 \pm 0.38$ \\
+
+CAPQL & $0.12 \pm 0.22$ & $0.14 \pm 0.31$ & -- & $1.00 \pm 0.00$ & $0.14 \pm 0.17$ & $0.11 \pm 0.10$ \\
+
+Original PCN & $0.00 \pm 0.00$ & $0.00 \pm 0.00$ & $0.00 \pm 0.00$ & -- & $0.00 \pm 0.00$ & $0.00 \pm 0.00$ \\
+
+PCN with buffer init. & $0.63 \pm 0.27$ & $0.29 \pm 0.39$ & $0.65 \pm 0.29$ & $1.00 \pm 0.00$ & -- & $0.26 \pm 0.20$ \\
+
+Guided PCN & $0.54 \pm 0.28$ & $0.31 \pm 0.39$ & $0.69 \pm 0.28$ & $1.00 \pm 0.00$ & $0.35 \pm 0.22$ & -- \\
+
+\hline
+\end{tabular}
+}
+\end{table}
+
+%table6
+\begin{table}[H]
+\centering
+\setlength{\tabcolsep}{1pt}
+\scriptsize
+\caption{Metrics of the six algorithms for stationary setting (high variance)}
+\label{tab:metric_stationary_3}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{c|c c c c c c}
+\hline
+Metric & MOPSO & MOPSO-AMS & CAPQL & Original PCN & PCN with buffer init. & Guided PCN \\
+\hline
+Spacing
+    & $188.27 \pm 209.21$
+    & $135.34 \pm 116.87$
+    & $162.64 \pm 146.01$
+    & $0.00 \pm 0.00$
+    & $405.09 \pm 187.22$
+    & $435.22 \pm 324.27$ \\
+
+Maximum spread
+    & $3847.74 \pm 2812.79$
+    & $5555.66 \pm 1907.80$
+    & $3093.04 \pm 1894.34$
+    & $0.00 \pm 0.00$
+    & $7020.04 \pm 2314.87$
+    & $7020.04 \pm 2314.87$ \\
+
+Mean total cost (1e3)
+    & $3.88 \pm 1.02$
+    & $3.60 \pm 0.83$
+    & $6.59 \pm 2.90$
+    & $50.94 \pm 0.90$
+    & $3.42 \pm 0.17$
+    & $3.45 \pm 0.20$ \\
+
+Mean stockout frequency
+    & $18.34 \pm 10.20$
+    & $27.15 \pm 9.16$
+    & $21.68 \pm 13.52$
+    & $0.00 \pm 0.00$
+    & $28.70 \pm 8.72$
+    & $27.15 \pm 9.92$ \\
+
+Mean stockout amount
+    & $950.95 \pm 596.65$
+    & $1490.11 \pm 500.44$
+    & $1132.84 \pm 816.47$
+    & $0.00 \pm 0.00$
+    & $1694.53 \pm 665.27$
+    & $1573.92 \pm 719.25$ \\
+
+HV (normalized)
+    & $1.3048 \pm 0.0265$
+    & $1.3114 \pm 0.0159$
+    & $1.2587 \pm 0.0703$
+    & $0.1208 \pm 0.0007$
+    & $1.3159 \pm 0.0042$
+    & $1.3163 \pm 0.0046$ \\
+
+IGD (normalized)
+    & $0.1264 \pm 0.1554$
+    & $0.0389 \pm 0.0584$
+    & $0.1403 \pm 0.1225$
+    & $1.1104 \pm 0.0444$
+    & $0.0555 \pm 0.0495$
+    & $0.0480 \pm 0.0402$ \\
+\hline
+\end{tabular}
+}
+\end{table}
+
+%table7
+\begin{table}[H]
+\centering
+\scriptsize
+\caption{Results of the set coverage $C(A,B)$ metric for the seasonal setting}
+\label{tab:SC_seasonal}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{c|c c c c c c}
+\hline
+\diagbox[width=11em,height=2em]{$A$}{$B$} & MOPSO & MOPSO-AMS & CAPQL & Original PCN & PCN with buffer init. & Guided PCN \\
+\hline
+MOPSO & -- & $0.22 \pm 0.26$ & $0.00 \pm 0.00$ & $0.00 \pm 0.00$ & $0.00 \pm 0.00$ & $0.00 \pm 0.00$ \\
+
+MOPSO-AMS & $0.43 \pm 0.23$ & -- & $0.02 \pm 0.05$ & $0.00 \pm 0.00$ & $0.00 \pm 0.00$ & $0.00 \pm 0.00$ \\
+
+CAPQL & $0.98 \pm 0.07$ & $0.97 \pm 0.08$ & -- & $1.00 \pm 0.00$ & $0.12 \pm 0.11$ & $0.11 \pm 0.13$ \\
+
+Original PCN & $0.00 \pm 0.00$ & $0.00 \pm 0.00$ & $0.00 \pm 0.00$ & -- & $0.00 \pm 0.00$ & $0.00 \pm 0.00$ \\
+
+PCN with buffer init. & $1.00 \pm 0.00$ & $1.00 \pm 0.00$ & $0.67 \pm 0.31$ & $1.00 \pm 0.00$ & -- & $0.34 \pm 0.15$ \\
+
+Guided PCN & $1.00 \pm 0.00$ & $1.00 \pm 0.00$ & $0.73 \pm 0.28$ & $1.00 \pm 0.00$ & $0.33 \pm 0.16$ & -- \\
+
+\hline
+\end{tabular}
+}
+\end{table}
+
+%table8
+\begin{table}[H]
+\centering
+\setlength{\tabcolsep}{1pt}
+\scriptsize
+\caption{Metrics of the six algorithms for the seasonal setting}
+\label{tab:metric_seasonal}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{c|c c c c c c}
+\hline
+Metric & MOPSO & MOPSO-AMS & CAPQL & Original PCN & PCN with buffer init. & Guided PCN \\
+\hline
+Spacing
+    & $110.56 \pm 24.57$
+    & $122.51 \pm 89.02$
+    & $43.57 \pm 36.28$
+    & $0.00 \pm 0.00$
+    & $56.17 \pm 14.55$
+    & $52.91 \pm 18.43$ \\
+
+Maximum spread
+    & $2994.92 \pm 102.02$
+    & $2375.11 \pm 516.59$
+    & $701.37 \pm 575.83$
+    & $0.00 \pm 0.00$
+    & $1613.02 \pm 121.42$
+    & $1613.02 \pm 121.42$ \\
+
+Mean total cost (1e3)
+    & $4.02 \pm 0.03$
+    & $4.20 \pm 0.35$
+    & $2.41 \pm 0.46$
+    & $18.87 \pm 0.33$
+    & $1.99 \pm 0.02$
+    & $1.99 \pm 0.02$ \\
+
+Mean stockout frequency
+    & $72.67 \pm 5.97$
+    & $53.59 \pm 9.86$
+    & $15.01 \pm 9.41$
+    & $0.00 \pm 0.00$
+    & $24.53 \pm 2.89$
+    & $24.65 \pm 2.93$ \\
+
+Mean stockout amount
+    & $1437.63 \pm 160.52$
+    & $937.07 \pm 201.93$
+    & $235.52 \pm 184.70$
+    & $0.00 \pm 0.00$
+    & $440.91 \pm 72.30$
+    & $422.06 \pm 66.60$ \\
+
+HV (normalized)
+    & $1.0009 \pm 0.0729$
+    & $1.0360 \pm 0.0442$
+    & $1.3008 \pm 0.0255$
+    & $0.1208 \pm 0.0007$
+    & $1.3229 \pm 0.0006$
+    & $1.3232 \pm 0.0005$ \\
+
+IGD (normalized)
+    & $0.1639 \pm 0.0092$
+    & $0.1620 \pm 0.0156$
+    & $0.1212 \pm 0.0850$
+    & $1.0460 \pm 0.0111$
+    & $0.0076 \pm 0.0016$
+    & $0.0053 \pm 0.0021$ \\
+\hline
+\end{tabular}
+}
+\end{table}
+
+%table11
+\begin{table}[H]
+\centering
+\setlength{\tabcolsep}{2pt}
+\scriptsize
+\caption{Results of the set coverage $C(A,B)$ metric for the case-study setting}
+\label{tab:SC_gs}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{c|c c c c c c}
+\hline
+\diagbox[width=11em,height=2em]{$A$}{$B$} & MOPSO & MOPSO-AMS & CAPQL & Original PCN & PCN with buffer init. & Guided PCN \\
+\hline
+MOPSO & -- & $0.12 \pm 0.30$ & $0.10 \pm 0.30$ & $0.90 \pm 0.30$ & $0.00 \pm 0.00$ & $0.00 \pm 0.00$ \\
+
+MOPSO-AMS & $0.15 \pm 0.32$ & -- & $0.00 \pm 0.00$ & $0.00 \pm 0.00$ & $0.03 \pm 0.08$ & $0.00 \pm 0.00$ \\
+
+CAPQL & $0.90 \pm 0.30$ & $0.38 \pm 0.46$ & -- & $1.00 \pm 0.00$ & $0.17 \pm 0.35$ & $0.10 \pm 0.30$ \\
+
+Original PCN & $0.00 \pm 0.00$ & $0.00 \pm 0.00$ & $0.00 \pm 0.00$ & -- & $0.00 \pm 0.00$ & $0.00 \pm 0.00$ \\
+
+PCN with buffer init. & $0.95 \pm 0.15$ & $0.50 \pm 0.50$ & $0.80 \pm 0.40$ & $1.00 \pm 0.00$ & -- & $0.30 \pm 0.46$ \\
+
+Guided PCN & $1.00 \pm 0.00$ & $0.60 \pm 0.49$ & $0.90 \pm 0.30$ & $1.00 \pm 0.00$ & $0.70 \pm 0.46$ & -- \\
+
+\hline
+\end{tabular}
+}
+\end{table}
+
+%table12
+\begin{table}[H]
+\centering
+\setlength{\tabcolsep}{2pt}
+\scriptsize
+\caption{Metrics of the six algorithms for the case-study setting}
+\label{tab:metric_gs}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{c|c c c c c c}
+\hline
+Metric & MOPSO & MOPSO-AMS & CAPQL & Original PCN & PCN with buffer init. & Guided PCN \\
+\hline
+Spacing
+    & $1.21 \pm 3.64$
+    & $3.38 \pm 4.60$
+    & $0.00 \pm 0.00$
+    & $0.00 \pm 0.00$
+    & $0.17 \pm 0.52$
+    & $0.29 \pm 0.86$ \\
+
+Maximum spread
+    & $4.61 \pm 13.83$
+    & $36.46 \pm 40.86$
+    & $0.41 \pm 1.24$
+    & $0.00 \pm 0.00$
+    & $2.54 \pm 7.62$
+    & $1.41 \pm 4.24$ \\
+
+Mean total cost
+    & $12.21 \pm 2.71$
+    & $8.94 \pm 1.80$
+    & $13.02 \pm 10.72$
+    & $61.58 \pm 1.75$
+    & $8.37 \pm 1.36$
+    & $8.10 \pm 1.39$ \\
+
+Mean stockout frequency
+    & $1.25 \pm 2.79$
+    & $6.89 \pm 2.59$
+    & $0.05 \pm 0.15$
+    & $0.00 \pm 0.00$
+    & $0.17 \pm 0.52$
+    & $0.12 \pm 0.38$ \\
+
+Mean stockout amount
+    & $4.75 \pm 10.75$
+    & $34.96 \pm 22.00$
+    & $0.20 \pm 0.60$
+    & $0.00 \pm 0.00$
+    & $1.23 \pm 3.67$
+    & $0.80 \pm 2.40$ \\
+
+HV (normalized)
+    & $1.1016 \pm 0.3671$
+    & $0.5772 \pm 0.4785$
+    & $1.2109 \pm 0.2251$
+    & $0.1208 \pm 0.0007$
+    & $1.3106 \pm 0.0212$
+    & $1.3163 \pm 0.0204$ \\
+
+IGD (normalized)
+    & $0.4765 \pm 0.4314$
+    & $0.6203 \pm 0.6365$
+    & $0.3313 \pm 0.3853$
+    & $1.1128 \pm 0.1370$
+    & $0.2957 \pm 0.3318$
+    & $0.2917 \pm 0.3343$ \\
+\hline
+\end{tabular}
+}
+\end{table}

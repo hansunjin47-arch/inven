@@ -1,0 +1,20 @@
+# Real-world sales data (proprietary, not for distribution)
+P_hnb/
+P_hnb_2015
+P_hnb_2016
+P_hnb_2017
+P_hnb_2018
+
+# External reference repositories (own git history / third-party code)
+_pgmorl_reference/
+_pdmorl_reference/
+_capql_reference/
+
+# Python / environment
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# IDE
+.idea/
