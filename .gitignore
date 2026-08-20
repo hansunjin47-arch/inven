@@ -54,3 +54,37 @@ __pycache__/
 # Superseded / working-draft tex and reference docs
 _guided_pcn_connection_paragraph.tex
 MOPSO_AMS_report_KR.md
+
+# Journal submission process documents (not part of the code release)
+response_letter.md
+response_letter_omega.docx
+
+# Rejected candidate case-study product (deodorant; sunblock/good1 was adopted)
+daily_demand_2015_good2.pkl
+daily_demand_2016_good2.pkl
+daily_demand_2017_good2.pkl
+demand_plot_2015_good2.png
+demand_plot_2016_good2.png
+demand_plot_2017_good2.png
+
+# Orphaned dashboard artifacts (generator script not part of the release)
+dashboard_template.html
+five_method_dashboard.html
+dashboard_payload_five_method.json
+
+# Exploratory/legacy result dumps superseded by the final figures/ folder
+result/pareto_5methods/
+result/pareto_2d_cost_amount/
+result/pareto_2d_cost_amount_broken/
+result/pareto_2d_cost_freq/
+result/pareto_2d_cost_freq_broken/
+result/pareto_7methods/
+result/pareto_original_4methods/
+result/pareto_with_cmode/
+result/pareto_gbm_after_softmax/
+result/action_trajectories/
+result/action_trajectories_Q/
+result/action_trajectories_k/
+result/Figure*.png
+result/action_trajectories_Q_GBM_1.png
+result/action_trajectories_k_GBM_1.png
