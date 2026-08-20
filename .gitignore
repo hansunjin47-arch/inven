@@ -28,9 +28,13 @@ response_letter.md
 response_letter_omega.docx
 
 # Exhaustive per-run sweep dumps -- regenerable from the tracked scripts and
-# per-run result CSVs; superseded by the curated figures in figures/
+# per-run result CSVs
 results/pareto_5methods/
 results/pareto_2d_cost_amount/
 results/pareto_2d_cost_amount_broken/
 results/pareto_2d_cost_freq/
 results/pareto_2d_cost_freq_broken/
+
+# Rendered manuscript figures -- regenerable from experiments/*.py; the
+# published paper is the canonical place to view them, not the code repo.
+figures/
