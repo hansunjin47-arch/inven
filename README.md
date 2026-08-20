@@ -19,39 +19,65 @@ study.
 ## Repository structure
 
 ```
-MOPSO.py, MOPSO_AMS.py          Evolutionary baselines
-pcn_continuous.py                 Original PCN / PCN+buffer-init / Guided PCN (core training loop)
-capql_baseline.py, capql_uniform_recipe.py   CAPQL baseline
-main.py, main_original.py         Simulation environment, evaluation utilities, action-trajectory plotting
-logger.py, compute_metrics.py     Shared utilities (HV/IGD/SC/spacing/spread)
+baselines/          Evolutionary and MORL baselines
+    MOPSO.py             Multi-objective particle swarm optimization
+    MOPSO_AMS.py          MOPSO with an adaptive multiple selection strategy
+    capql_baseline.py     Concave-augmented Pareto Q-learning (CAPQL)
+    capql_uniform_recipe.py   CAPQL training entry point (uniform preference recipe)
 
-compare_five_methods_pbest.py     Central results loader used by all downstream analysis/plotting
-grid_search_pbest_training_params.py   Training entry point (run_one) used to (re)generate PCN results
+models/              The proposed method
+    pcn_continuous.py    Original PCN / PCN+buffer-init / Guided PCN (continuous action space)
 
-_gen_paper_tables_700.py          Generates the manuscript's result tables
-_measure_comp_time_stat_low.py    Generates the computation-time table
-_regen_gbm_source_max_size_700.py           Regenerates the GBM action-trajectory source data
-_regen_gbm_trajectories_6methods.py         Generates the GBM Q/r trajectory figure
-plot_2d_cost_projections_6methods.py        2D cost-vs-service-level projection figures
-plot_5methods_pbest_total_steps_2e6.py      3D Pareto-front figures
-plot_seasonal_demand.py, plot_gbm_demand.py Demand-sequence figures
-read_data.py                      Real-world case-study data extraction and demand figures
+envs/                Shared simulation environment
+    main_original.py    Inventory simulator, demand generators, MDP definitions
+    main.py              Evaluation utilities and action-trajectory plotting
 
-figures/                          Final manuscript figures (PDF, vector)
-result/gbm_trajectory_source/     Source data behind the GBM action-trajectory figure
-MOPSO_tsou_ablation/, MOPSO_AMS_2x/, capql_results/, capql_results_export/, PCN_pbest_grid_free/
-                                   Per-run result CSVs (10 runs x 6 demand settings) for each algorithm
-grid_search_sweep_summary.csv     Summary of the hyperparameter sweep behind the adopted PCN configuration
+utils/
+    logger.py            Training logger
+    compute_metrics.py    HV / IGD / set coverage / spacing / maximum spread
+
+experiments/         Scripts that reproduce the paper's tables and figures
+    compare_five_methods_pbest.py         Central results loader (paths_for_setting)
+    grid_search_pbest_training_params.py   Training entry point (run_one)
+    _gen_paper_tables_700.py               Result tables (Tables 1-13)
+    _measure_comp_time_stat_low.py          Computation-time table (Table 13)
+    _regen_gbm_source_max_size_700.py       GBM action-trajectory source data
+    _regen_gbm_trajectories_6methods.py     GBM Q/r trajectory figure (Figure 6)
+    plot_2d_cost_projections_6methods.py    2D cost-vs-service-level figures (Figure 3)
+    plot_5methods_pbest_total_steps_2e6.py  3D Pareto-front figures (Figures 2, 8-10)
+    plot_seasonal_demand.py, plot_gbm_demand.py   Demand-sequence figures (Figures 4-5)
+    read_data.py                             Real-world case-study data extraction (Figure 7)
+
+data/                Derived experiment inputs (small, non-proprietary)
+    daily_demand_2015_good1.pkl, daily_demand_2016_good1.pkl
+        Daily demand extracted from the real-world case study (train/test years)
+
+results/             Per-run result CSVs (10 runs x 6 demand settings) for every algorithm
+    mopso/, mopso_ams/, capql/, capql_export/, pcn/
+    gbm_trajectory_source/    Source data behind the GBM action-trajectory figure
+    grid_search_sweep_summary.csv   Summary of the hyperparameter sweep behind
+                                     the adopted PCN configuration
+
+figures/              Final manuscript figures (PDF, vector)
+```
+
+All scripts add `baselines/`, `envs/`, `models/`, `utils/`, and `experiments/` to
+`sys.path` and `chdir` to the repository root on import, so they can be run directly
+regardless of the working directory, e.g.:
+
+```
+python experiments/_gen_paper_tables_700.py
 ```
 
 ## Notes on scope
 
 This repository contains the code and result data needed to reproduce the paper's
-tables and figures from `compare_five_methods_pbest.py` onward. It does not include:
+tables and figures from `experiments/compare_five_methods_pbest.py` onward. It does
+not include:
 
 - Raw real-world sales data used in the case study (proprietary retailer data).
 - The many one-off scripts used during hyperparameter search and ablation exploration
-  prior to settling on the reported configuration; `grid_search_sweep_summary.csv`
+  prior to settling on the reported configuration; `results/grid_search_sweep_summary.csv`
   summarizes the outcome of that search.
 
 ## Requirements

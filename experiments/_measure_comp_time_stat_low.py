@@ -1,3 +1,11 @@
+import os as _os, sys as _sys
+_ROOT = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
+for _sub in ("baselines", "envs", "models", "utils", "experiments"):
+    _p = _os.path.join(_ROOT, _sub)
+    if _p not in _sys.path:
+        _sys.path.insert(0, _p)
+_os.chdir(_ROOT)
+
 """One-off: time a single run (run_id=1) of MOPSO, MOPSO-AMS (2x matched
 budget), Original PCN, PCN+buffer init, and Guided PCN on stat_low, using
 the exact same configs that produced the paper's reported numbers (MOPSO:

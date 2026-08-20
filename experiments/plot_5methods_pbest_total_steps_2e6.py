@@ -1,3 +1,11 @@
+import os as _os, sys as _sys
+_ROOT = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
+for _sub in ("baselines", "envs", "models", "utils", "experiments"):
+    _p = _os.path.join(_ROOT, _sub)
+    if _p not in _sys.path:
+        _sys.path.insert(0, _p)
+_os.chdir(_ROOT)
+
 """3D Pareto front plots for the current 5-method comparison (MOPSO pbest-
 fixed, Original PCN, PCN + buffer init, Guided PCN -- all at max_size=750
 -- and MOPSO-AMS at the 2x matched budget), one figure per (setting, run),
@@ -20,7 +28,7 @@ import pandas as pd
 
 from compare_five_methods_pbest import METHODS, METHOD_LABELS, SETTINGS, N_RUNS, paths_for_setting
 
-OUT_DIR = "./result/pareto_5methods"
+OUT_DIR = "results/pareto_5methods"
 
 SETTING_LABELS = {
     "GBM": "GBM", "stat_low": "Stationary (low)", "stat_medium": "Stationary (medium)",

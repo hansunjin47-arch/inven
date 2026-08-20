@@ -1,3 +1,11 @@
+import os as _os, sys as _sys
+_ROOT = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
+for _sub in ("baselines", "envs", "models", "utils", "experiments"):
+    _p = _os.path.join(_ROOT, _sub)
+    if _p not in _sys.path:
+        _sys.path.insert(0, _p)
+_os.chdir(_ROOT)
+
 import pandas as pd
 import numpy as np
 import datetime
@@ -74,7 +82,7 @@ daily_demand_2015_good1.loc[daily_demand_2015_good1 > 10] = 0
 fixed_seq_2015_good1 = daily_demand_2015_good1.values # NumPy 배열로 변환
 
 # fixed_seq를 pickle 파일로 저장
-pickle_file_path = './daily_demand_2015_good1.pkl'
+pickle_file_path = 'data/daily_demand_2015_good1.pkl'
 with open(pickle_file_path, 'wb') as f: # 'wb'는 쓰기 바이너리 모드
     pickle.dump(fixed_seq_2015_good1, f)
 
@@ -107,7 +115,7 @@ fixed_seq_2015_good1 = daily_demand_2015_good1.values # NumPy 배열로 변환
 fixed_seq_2016_good1 = daily_demand_2016_good1.values # NumPy 배열로 변환
 
 # fixed_seq를 pickle 파일로 저장
-pickle_file_path = './daily_demand_2016_good1.pkl'
+pickle_file_path = 'data/daily_demand_2016_good1.pkl'
 with open(pickle_file_path, 'wb') as f: # 'wb'는 쓰기 바이너리 모드
     pickle.dump(fixed_seq_2016_good1, f)
 

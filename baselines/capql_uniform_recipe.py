@@ -1,3 +1,11 @@
+import os as _os, sys as _sys
+_ROOT = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
+for _sub in ("baselines", "envs", "models", "utils", "experiments"):
+    _p = _os.path.join(_ROOT, _sub)
+    if _p not in _sys.path:
+        _sys.path.insert(0, _p)
+_os.chdir(_ROOT)
+
 """Single uniform recipe applied identically across all 6 scenarios:
 obs-norm ON (ObsNormalizer, default eps=1e-6), alpha=0.05, start_steps=10000,
 lr=3e-4 (paper default), total_steps=300000. No per-scenario parameter
@@ -6,7 +14,7 @@ differences -- this replaces the earlier per-scenario patchwork
 seeds per scenario as requested.
 
 total_steps raised from the original 100000 test budget to 300000 based on
-the Round 11 convergence-curve check (capql_results/convergence_curves.csv):
+the Round 11 convergence-curve check (results/capql/convergence_curves.csv):
 4/5 scenarios already plateaued by 100k, but stat_high only reached its
 plateau around 150k-300k, so 300k is a round number that covers all
 scenarios' convergence points without the ~10-100x cost of matching the
@@ -22,7 +30,7 @@ Usage (run in the `pcn` conda env):
     <run_id>: 1-10 (used as the random/np/torch seed)
 
 Saves the non-dominated front to
-./capql_results/uniform_300k/<scenario>_run<run_id>.csv
+./results/capql/uniform_300k/<scenario>_run<run_id>.csv
 """
 
 import os
@@ -91,7 +99,7 @@ if __name__ == "__main__":
     elif SCENARIO == "seasonal":
         env = cb.ObsNormalizer(cb.InventoryMOEnv(SCALING_FACTOR, "seasonal"))
     elif SCENARIO == "gs":
-        with open("./daily_demand_2015_good1.pkl", "rb") as f:
+        with open("data/daily_demand_2015_good1.pkl", "rb") as f:
             fixed_seq = pickle.load(f)
         env = cb.ObsNormalizer(cb.InventoryMOEnv(SCALING_FACTOR, "gs", fixed_demand_seq=fixed_seq))
     else:
@@ -114,7 +122,7 @@ if __name__ == "__main__":
         # sequence now, keeping the same ObsNormalizer instance (and its
         # obs_rms learned during training) and the same InventoryMOEnv --
         # only the underlying demand data changes.
-        with open("./daily_demand_2016_good1.pkl", "rb") as f:
+        with open("data/daily_demand_2016_good1.pkl", "rb") as f:
             test_seq = pickle.load(f)
         env.sim.fixed_demand_seq = test_seq
 
@@ -122,9 +130,9 @@ if __name__ == "__main__":
     front = cb.evaluate_front(agent, env, n_eval_weights=200, n_episodes_per_weight=1)
     eval_elapsed = time.time() - eval_start
 
-    os.makedirs("./capql_results/uniform_300k", exist_ok=True)
+    os.makedirs("./results/capql/uniform_300k", exist_ok=True)
     df = pd.DataFrame({"TC": -front[:, 0], "Frequency": -front[:, 1], "Amount": -front[:, 2]})
-    out_path = f"./capql_results/uniform_300k/{SCENARIO}_run{RUN_ID}.csv"
+    out_path = f"./results/capql/uniform_300k/{SCENARIO}_run{RUN_ID}.csv"
     df.to_csv(out_path, index=False)
     print(f"[{SCENARIO} run {RUN_ID}] {len(front)} non-dominated points -> saved {out_path}")
     print(f"[{SCENARIO} run {RUN_ID}] eval done in {eval_elapsed:.1f}s")
@@ -133,7 +141,7 @@ if __name__ == "__main__":
     # "representative action trajectories" figure -- CAPQL analogue of PCN's
     # Episode==0 trajectory dump, since CAPQL's action is state-conditioned
     # (unlike MOPSO/MOPSO-AMS's single static (Q, r) policy).
-    traj_path = f"./capql_results/uniform_300k/{SCENARIO}_run{RUN_ID}_action_trajectory.csv"
+    traj_path = f"./results/capql/uniform_300k/{SCENARIO}_run{RUN_ID}_action_trajectory.csv"
     equal_w = np.full(env.rwd_dim, 1.0 / env.rwd_dim, dtype=np.float32)
     cb.rollout_action_trajectory(agent, env, equal_w, out_path=traj_path)
     print(f"[{SCENARIO} run {RUN_ID}] action trajectory (w={equal_w}) -> saved {traj_path}")

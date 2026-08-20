@@ -1,3 +1,11 @@
+import os as _os, sys as _sys
+_ROOT = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
+for _sub in ("baselines", "envs", "models", "utils", "experiments"):
+    _p = _os.path.join(_ROOT, _sub)
+    if _p not in _sys.path:
+        _sys.path.insert(0, _p)
+_os.chdir(_ROOT)
+
 import os
 import gym
 import numpy as np
@@ -806,8 +814,8 @@ if __name__ == "__main__":
         ax.set_zlabel("Total Cost(1e6)")
         ax.set_title(f"{demand_env} Pareto Front Comparison (Run {run_id})")
         ax.legend()
-        os.makedirs(f"./result/pareto_original_4methods/{demand_env}", exist_ok=True)
-        plt.savefig(f"./result/pareto_original_4methods/{demand_env}/run{run_id}.png")
+        os.makedirs(f"results/pareto_original_4methods/{demand_env}", exist_ok=True)
+        plt.savefig(f"results/pareto_original_4methods/{demand_env}/run{run_id}.png")
         plt.close()
 
         '''''# ----- Plot: Cost vs Amount -----
@@ -863,8 +871,8 @@ if __name__ == "__main__":
         plt.grid(True)
 
         plt.tight_layout()
-        os.makedirs(f"./result/pareto_2d_cost_amount/{demand_env}", exist_ok=True)
-        plt.savefig(f"./result/pareto_2d_cost_amount/{demand_env}/run{run_id}.png")
+        os.makedirs(f"results/pareto_2d_cost_amount/{demand_env}", exist_ok=True)
+        plt.savefig(f"results/pareto_2d_cost_amount/{demand_env}/run{run_id}.png")
         plt.close()'''
 
         # ===============================
@@ -930,8 +938,8 @@ if __name__ == "__main__":
 
         plt.tight_layout()
         plt.subplots_adjust(hspace=0.05)
-        os.makedirs(f"./result/pareto_2d_cost_freq_broken/{demand_env}", exist_ok=True)
-        plt.savefig(f"./result/pareto_2d_cost_freq_broken/{demand_env}/run{run_id}.png")
+        os.makedirs(f"results/pareto_2d_cost_freq_broken/{demand_env}", exist_ok=True)
+        plt.savefig(f"results/pareto_2d_cost_freq_broken/{demand_env}/run{run_id}.png")
         plt.close()
 
         # ===============================
@@ -994,8 +1002,8 @@ if __name__ == "__main__":
 
         plt.tight_layout()
         plt.subplots_adjust(hspace=0.05)
-        os.makedirs(f"./result/pareto_2d_cost_amount_broken/{demand_env}", exist_ok=True)
-        plt.savefig(f"./result/pareto_2d_cost_amount_broken/{demand_env}/run{run_id}.png")
+        os.makedirs(f"results/pareto_2d_cost_amount_broken/{demand_env}", exist_ok=True)
+        plt.savefig(f"results/pareto_2d_cost_amount_broken/{demand_env}/run{run_id}.png")
         plt.close()
 
         plot_representative_action_trajectories(
@@ -1003,7 +1011,7 @@ if __name__ == "__main__":
             pcn_original_csv_path="./PCN/original_non_dominated_action_trajectories_1.csv",
             pcn_var1_csv_path="./PCN/variation1_non_dominated_action_trajectories_1.csv",
             pcn_var2_csv_path="./PCN/variation2_non_dominated_action_trajectories_1.csv",
-            save_dir="./result",
+            save_dir="results",
             demand_env='GBM',  # e.g., "stationary"
             run_id=run_id
         )

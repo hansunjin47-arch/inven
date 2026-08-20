@@ -1,3 +1,11 @@
+import os as _os, sys as _sys
+_ROOT = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
+for _sub in ("baselines", "envs", "models", "utils", "experiments"):
+    _p = _os.path.join(_ROOT, _sub)
+    if _p not in _sys.path:
+        _sys.path.insert(0, _p)
+_os.chdir(_ROOT)
+
 """Reusable helpers for grid-searching Guided PCN (variation2) hyperparameters
 against the PBEST-TIE-BREAK-FIXED MOPSO seed -- the previous 7-parameter
 grid search (grid_search_training_params.py) used the original (non-fixed)
@@ -53,12 +61,12 @@ SCALING_FACTOR_FOR_DEMAND_ENV = {
     "GBM": [0.0001, 0.1, 0.1, 0.1],
 }
 MOPSO_PBEST_SEED_PATH = {
-    "GBM": "./MOPSO_tsou_ablation/MOPSO_GBM_pbest_only/MOPSO_run_GBM_{run_id}.csv",
-    "stat_low": "./MOPSO_tsou_ablation/MOPSO_stat_low_pbest_only/MOPSO_run_stat_low_{run_id}.csv",
-    "stat_medium": "./MOPSO_tsou_ablation/MOPSO_stat_medium_pbest_only/MOPSO_run_stat_medium_{run_id}.csv",
-    "stat_high": "./MOPSO_tsou_ablation/MOPSO_stat_high_pbest_only/MOPSO_run_stat_high_{run_id}.csv",
-    "seasonal": "./MOPSO_tsou_ablation/MOPSO_seasonal_pbest_only/MOPSO_run_seasonal_{run_id}.csv",
-    "gs": "./MOPSO_tsou_ablation/MOPSO_gs_pbest_only/MOPSO_run_gs_{run_id}.csv",
+    "GBM": "./results/mopso/MOPSO_GBM_pbest_only/MOPSO_run_GBM_{run_id}.csv",
+    "stat_low": "./results/mopso/MOPSO_stat_low_pbest_only/MOPSO_run_stat_low_{run_id}.csv",
+    "stat_medium": "./results/mopso/MOPSO_stat_medium_pbest_only/MOPSO_run_stat_medium_{run_id}.csv",
+    "stat_high": "./results/mopso/MOPSO_stat_high_pbest_only/MOPSO_run_stat_high_{run_id}.csv",
+    "seasonal": "./results/mopso/MOPSO_seasonal_pbest_only/MOPSO_run_seasonal_{run_id}.csv",
+    "gs": "./results/mopso/MOPSO_gs_pbest_only/MOPSO_run_gs_{run_id}.csv",
 }
 N_RUNS = 10
 
@@ -144,7 +152,7 @@ def run_one(setting, run_id, train_kwargs, out_dir, version="variation2"):
     scaling_factor = torch.tensor([scaling_factor_vals]).to(device)
 
     if setting == "gs":
-        with open("./daily_demand_2015_good1.pkl", "rb") as f:
+        with open("data/daily_demand_2015_good1.pkl", "rb") as f:
             train_seq = pickle.load(f)
         env = pcn_continuous.Inventory(scaling_factor, demand_env, train_seq)
     elif setting == "GBM":

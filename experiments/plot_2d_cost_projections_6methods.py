@@ -1,3 +1,11 @@
+import os as _os, sys as _sys
+_ROOT = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
+for _sub in ("baselines", "envs", "models", "utils", "experiments"):
+    _p = _os.path.join(_ROOT, _sub)
+    if _p not in _sys.path:
+        _sys.path.insert(0, _p)
+_os.chdir(_ROOT)
+
 """2D Pareto-front projections (total cost vs stockout frequency, total cost
 vs stockout amount) for the stationary high-variance setting, matching the
 paper's Figure 3. Regenerated with all six methods (adding MOPSO-AMS and
@@ -21,10 +29,10 @@ import pandas as pd
 from compare_five_methods_pbest import METHOD_LABELS, N_RUNS, paths_for_setting
 
 SETTING = "stat_high"
-OUT_DIR_AMOUNT = "./result/pareto_2d_cost_amount"
-OUT_DIR_FREQ = "./result/pareto_2d_cost_freq"
-OUT_DIR_AMOUNT_BROKEN = "./result/pareto_2d_cost_amount_broken"
-OUT_DIR_FREQ_BROKEN = "./result/pareto_2d_cost_freq_broken"
+OUT_DIR_AMOUNT = "results/pareto_2d_cost_amount"
+OUT_DIR_FREQ = "results/pareto_2d_cost_freq"
+OUT_DIR_AMOUNT_BROKEN = "results/pareto_2d_cost_amount_broken"
+OUT_DIR_FREQ_BROKEN = "results/pareto_2d_cost_freq_broken"
 
 # Original PCN's degenerate single solution sits far above every other
 # method's cost (see main.py's plot_representative_action_trajectories for

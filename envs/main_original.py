@@ -1,3 +1,11 @@
+import os as _os, sys as _sys
+_ROOT = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
+for _sub in ("baselines", "envs", "models", "utils", "experiments"):
+    _p = _os.path.join(_ROOT, _sub)
+    if _p not in _sys.path:
+        _sys.path.insert(0, _p)
+_os.chdir(_ROOT)
+
 import gym
 import numpy as np
 from scipy.stats import truncnorm, norm
@@ -506,7 +514,7 @@ if __name__ == "__main__":
                 objective = [row["TC"], row["Frequency"], row["Amount"]]
                 solution.append((action, objective))
 
-            pickle_file_path = './daily_demand_2016_good1.pkl'
+            pickle_file_path = 'data/daily_demand_2016_good1.pkl'
             #pickle_file_path = './daily_demand_2016_good2.pkl'
 
             with open(pickle_file_path, 'rb') as f:

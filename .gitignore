@@ -10,10 +10,6 @@ _pgmorl_reference/
 _pdmorl_reference/
 _capql_reference/
 
-# Legacy / exploratory data folders superseded by the final pipeline
-MOPSO/
-demand_plot/
-
 # Python / environment
 .venv/
 __pycache__/
@@ -23,68 +19,18 @@ __pycache__/
 # IDE
 .idea/
 
-# --- Root-level scripts: only the final pipeline is tracked ---
-# (everything else was one-off grid-search / ablation / diagnostic tooling)
-*.py
-!main.py
-!main_original.py
-!pcn_continuous.py
-!capql_baseline.py
-!capql_uniform_recipe.py
-!MOPSO.py
-!MOPSO_AMS.py
-!logger.py
-!compute_metrics.py
-!compare_five_methods_pbest.py
-!grid_search_pbest_training_params.py
-!_regen_gbm_source_max_size_700.py
-!_regen_gbm_trajectories_6methods.py
-!_gen_paper_tables_700.py
-!_measure_comp_time_stat_low.py
-!plot_2d_cost_projections_6methods.py
-!plot_5methods_pbest_total_steps_2e6.py
-!plot_seasonal_demand.py
-!plot_gbm_demand.py
-!read_data.py
-
 # Shell/PowerShell wrappers for one-off exploratory runs
 *.bat
 *.ps1
-
-# Superseded / working-draft tex and reference docs
-_guided_pcn_connection_paragraph.tex
-MOPSO_AMS_report_KR.md
 
 # Journal submission process documents (not part of the code release)
 response_letter.md
 response_letter_omega.docx
 
-# Rejected candidate case-study product (deodorant; sunblock/good1 was adopted)
-daily_demand_2015_good2.pkl
-daily_demand_2016_good2.pkl
-daily_demand_2017_good2.pkl
-demand_plot_2015_good2.png
-demand_plot_2016_good2.png
-demand_plot_2017_good2.png
-
-# Orphaned dashboard artifacts (generator script not part of the release)
-dashboard_template.html
-five_method_dashboard.html
-dashboard_payload_five_method.json
-
-# Exploratory/legacy result dumps superseded by the final figures/ folder
-result/pareto_5methods/
-result/pareto_2d_cost_amount/
-result/pareto_2d_cost_amount_broken/
-result/pareto_2d_cost_freq/
-result/pareto_2d_cost_freq_broken/
-result/pareto_7methods/
-result/pareto_original_4methods/
-result/pareto_with_cmode/
-result/pareto_gbm_after_softmax/
-result/action_trajectories/
-result/action_trajectories_Q/
-result/action_trajectories_k/
-result/Figure*.png
-result/action_trajectories_Q_GBM_1.png
-result/action_trajectories_k_GBM_1.png
+# Exhaustive per-run sweep dumps -- regenerable from the tracked scripts and
+# per-run result CSVs; superseded by the curated figures in figures/
+results/pareto_5methods/
+results/pareto_2d_cost_amount/
+results/pareto_2d_cost_amount_broken/
+results/pareto_2d_cost_freq/
+results/pareto_2d_cost_freq_broken/

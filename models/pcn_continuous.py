@@ -1,3 +1,11 @@
+import os as _os, sys as _sys
+_ROOT = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
+for _sub in ("baselines", "envs", "models", "utils", "experiments"):
+    _p = _os.path.join(_ROOT, _sub)
+    if _p not in _sys.path:
+        _sys.path.insert(0, _p)
+_os.chdir(_ROOT)
+
 import heapq
 import time
 
@@ -731,7 +739,7 @@ def train(version, demand_env, env, model, run_id, scaling_factor, learning_rate
             # MOPSO 실행 (단일 season)
             device = 'cpu'
             # 파일 경로 설정 (저장된 pickle 파일의 실제 경로에 맞게 수정해주세요)
-            pickle_file_path = './daily_demand_2015_good1.pkl'
+            pickle_file_path = 'data/daily_demand_2015_good1.pkl'
             #pickle_file_path = './daily_demand_2015_good2.pkl'
 
             with open(pickle_file_path, 'rb') as f:  # 'rb'는 읽기 바이너리 모드
@@ -783,7 +791,7 @@ def train(version, demand_env, env, model, run_id, scaling_factor, learning_rate
         # original demand (stationary)
         device = 'cpu'
         # 파일 경로 설정 (저장된 pickle 파일의 실제 경로에 맞게 수정해주세요)
-        pickle_file_path = './daily_demand_2015_good1.pkl'
+        pickle_file_path = 'data/daily_demand_2015_good1.pkl'
         #pickle_file_path = './daily_demand_2015_good2.pkl'
 
         with open(pickle_file_path, 'rb') as f:  # 'rb'는 읽기 바이너리 모드
@@ -1041,7 +1049,7 @@ def train(version, demand_env, env, model, run_id, scaling_factor, learning_rate
 
     test = False
     if demand_env == 'gs':
-        pickle_file_path = './daily_demand_2016_good1.pkl'
+        pickle_file_path = 'data/daily_demand_2016_good1.pkl'
         #pickle_file_path = './daily_demand_2016_good2.pkl'
         with open(pickle_file_path, 'rb') as f:
             fixed_seq_2016 = pickle.load(f)
@@ -1064,7 +1072,7 @@ def train(version, demand_env, env, model, run_id, scaling_factor, learning_rate
         actions_by_episode[ep_idx] = actions
 
     # --- 2. 2016년 테스트 데이터 로드 ---
-    pickle_file_path = './daily_demand_2016_good1.pkl'
+    pickle_file_path = 'data/daily_demand_2016_good1.pkl'
     #pickle_file_path = './daily_demand_2016_good2.pkl'
     with open(pickle_file_path, 'rb') as f:
         fixed_seq = pickle.load(f)

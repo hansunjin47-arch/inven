@@ -1,3 +1,11 @@
+import os as _os, sys as _sys
+_ROOT = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
+for _sub in ("baselines", "envs", "models", "utils", "experiments"):
+    _p = _os.path.join(_ROOT, _sub)
+    if _p not in _sys.path:
+        _sys.path.insert(0, _p)
+_os.chdir(_ROOT)
+
 """MOPSO-AMS: multi-swarm MOPSO with an adaptive multiple selection strategy.
 
 Implements Han, Zhang, Yinga & Qiao (2023), "Adaptive multiple selection

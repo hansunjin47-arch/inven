@@ -1,3 +1,11 @@
+import os as _os, sys as _sys
+_ROOT = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
+for _sub in ("baselines", "envs", "models", "utils", "experiments"):
+    _p = _os.path.join(_ROOT, _sub)
+    if _p not in _sys.path:
+        _sys.path.insert(0, _p)
+_os.chdir(_ROOT)
+
 """Six-method comparison table + figure, all using the pbest-tiebreak-fixed
 MOPSO seed where applicable: MOPSO, Original PCN, PCN variation1 (buffer init
 only), PCN variation2 (Guided PCN), MOPSO-AMS (2x matched-budget --
@@ -6,7 +14,7 @@ total pipeline cost is ~2x plain MOPSO's, matching MOPSO-AMS to the same
 total compute for a fair comparison), and CAPQL (MORL baseline, uniform
 recipe: obs-norm on, alpha=0.05, start_steps=10000, total_steps=300000,
 10 seeds -- results generated on a separate PC and imported under
-./capql_results_export/). All 3 PCN variants now use max_size=700 (final
+./results/capql_export/). All 3 PCN variants now use max_size=700 (final
 adopted single-factor config, superseding the earlier max_size=750
 default: a full fine-grid sweep of 600/700/750/800/900/1500 found 700
 best overall, and a further comparison of 700 alone vs 750 vs
@@ -44,31 +52,31 @@ METHOD_LABELS = {
 }
 
 MOPSO_PBEST_PATH = {
-    "GBM": "./MOPSO_tsou_ablation/MOPSO_GBM_pbest_only/MOPSO_run_GBM_{run}.csv",
-    "stat_low": "./MOPSO_tsou_ablation/MOPSO_stat_low_pbest_only/MOPSO_run_stat_low_{run}.csv",
-    "stat_medium": "./MOPSO_tsou_ablation/MOPSO_stat_medium_pbest_only/MOPSO_run_stat_medium_{run}.csv",
-    "stat_high": "./MOPSO_tsou_ablation/MOPSO_stat_high_pbest_only/MOPSO_run_stat_high_{run}.csv",
-    "seasonal": "./MOPSO_tsou_ablation/MOPSO_seasonal_pbest_only/MOPSO_run_seasonal_{run}.csv",
-    "gs": "./MOPSO_tsou_ablation/MOPSO_gs_pbest_only/MOPSO_run_gs_test1_{run}.csv",
+    "GBM": "./results/mopso/MOPSO_GBM_pbest_only/MOPSO_run_GBM_{run}.csv",
+    "stat_low": "./results/mopso/MOPSO_stat_low_pbest_only/MOPSO_run_stat_low_{run}.csv",
+    "stat_medium": "./results/mopso/MOPSO_stat_medium_pbest_only/MOPSO_run_stat_medium_{run}.csv",
+    "stat_high": "./results/mopso/MOPSO_stat_high_pbest_only/MOPSO_run_stat_high_{run}.csv",
+    "seasonal": "./results/mopso/MOPSO_seasonal_pbest_only/MOPSO_run_seasonal_{run}.csv",
+    "gs": "./results/mopso/MOPSO_gs_pbest_only/MOPSO_run_gs_test1_{run}.csv",
 }
 MOPSO_AMS_PAPERPARAMS_PATH = {
-    "GBM": "./MOPSO_AMS_2x/MOPSO_AMS_GBM/MOPSO_AMS_run_GBM_{run}.csv",
-    "stat_low": "./MOPSO_AMS_2x/MOPSO_AMS_stat_low/MOPSO_AMS_run_stat_low_{run}.csv",
-    "stat_medium": "./MOPSO_AMS_2x/MOPSO_AMS_stat_medium/MOPSO_AMS_run_stat_medium_{run}.csv",
-    "stat_high": "./MOPSO_AMS_2x/MOPSO_AMS_stat_high/MOPSO_AMS_run_stat_high_{run}.csv",
-    "seasonal": "./MOPSO_AMS_2x/MOPSO_AMS_seasonal/MOPSO_AMS_run_seasonal_{run}.csv",
-    "gs": "./MOPSO_AMS_2x/MOPSO_AMS_gs/MOPSO_AMS_run_gs_test1_{run}.csv",
+    "GBM": "./results/mopso_ams/MOPSO_AMS_GBM/MOPSO_AMS_run_GBM_{run}.csv",
+    "stat_low": "./results/mopso_ams/MOPSO_AMS_stat_low/MOPSO_AMS_run_stat_low_{run}.csv",
+    "stat_medium": "./results/mopso_ams/MOPSO_AMS_stat_medium/MOPSO_AMS_run_stat_medium_{run}.csv",
+    "stat_high": "./results/mopso_ams/MOPSO_AMS_stat_high/MOPSO_AMS_run_stat_high_{run}.csv",
+    "seasonal": "./results/mopso_ams/MOPSO_AMS_seasonal/MOPSO_AMS_run_seasonal_{run}.csv",
+    "gs": "./results/mopso_ams/MOPSO_AMS_gs/MOPSO_AMS_run_gs_test1_{run}.csv",
 }
 
 
 def paths_for_setting(setting):
     return {
         "MOPSO": MOPSO_PBEST_PATH[setting],
-        "PCN_original": f"./PCN_pbest_grid_free/PCN_{setting}_original_max_size_700/PCN_{setting}_original_run_{{run}}.csv",
-        "PCN_variation1": f"./PCN_pbest_grid_free/PCN_{setting}_variation1_max_size_700/PCN_{setting}_variation1_run_{{run}}.csv",
-        "PCN_variation2": f"./PCN_pbest_grid_free/PCN_{setting}_variation2_max_size_700/PCN_{setting}_variation2_run_{{run}}.csv",
+        "PCN_original": f"./results/pcn/PCN_{setting}_original_max_size_700/PCN_{setting}_original_run_{{run}}.csv",
+        "PCN_variation1": f"./results/pcn/PCN_{setting}_variation1_max_size_700/PCN_{setting}_variation1_run_{{run}}.csv",
+        "PCN_variation2": f"./results/pcn/PCN_{setting}_variation2_max_size_700/PCN_{setting}_variation2_run_{{run}}.csv",
         "MOPSO_AMS": MOPSO_AMS_PAPERPARAMS_PATH[setting],
-        "CAPQL": f"./capql_results_export/{setting}/seed_runs/{setting}_run{{run}}.csv",
+        "CAPQL": f"./results/capql_export/{setting}/seed_runs/{setting}_run{{run}}.csv",
     }
 
 

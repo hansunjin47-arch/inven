@@ -1,3 +1,11 @@
+import os as _os, sys as _sys
+_ROOT = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
+for _sub in ("baselines", "envs", "models", "utils", "experiments"):
+    _p = _os.path.join(_ROOT, _sub)
+    if _p not in _sys.path:
+        _sys.path.insert(0, _p)
+_os.chdir(_ROOT)
+
 """CAPQL baseline for the (Q, r) continuous-review inventory problem.
 
 Algorithm: Concave-Augmented Pareto Q-Learning (CAPQL), from Lu, Herman & Yu,
